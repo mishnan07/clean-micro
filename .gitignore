@@ -1,0 +1,5 @@
+node_modules
+dist
+.env
+ms_template
+docker-compose.yaml
