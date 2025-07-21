@@ -1,11 +1,12 @@
 const express = require('express');
-const { googleAuth, login, register } = require('../controllers/authController');
+const { googleAuth, appleAuth, login, register } = require('../controllers/authController');
 const { authenticateToken } = require('../middleware/auth');
 
 const router = express.Router();
 
 // Authentication routes
 router.post('/google', googleAuth);
+router.post('/apple', appleAuth);
 router.post('/login', login);
 router.post('/register', register);
 

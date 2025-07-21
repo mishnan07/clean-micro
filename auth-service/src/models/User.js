@@ -22,6 +22,10 @@ const userSchema = new mongoose.Schema({
     type: String,
     sparse: true
   },
+  appleId: {
+    type: String,
+    sparse: true
+  },
   profileImage: {
     type: String,
     default: null
@@ -32,7 +36,7 @@ const userSchema = new mongoose.Schema({
   },
   authProvider: {
     type: String,
-    enum: ['local', 'google'],
+    enum: ['local', 'google', 'apple'],
     default: 'local'
   }
 }, {

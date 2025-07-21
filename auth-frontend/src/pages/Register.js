@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import GoogleLoginButton from '../components/GoogleLoginButton';
+import AppleLoginButton from '../components/AppleLoginButton';
 
 const Register = () => {
   const [name, setName] = useState('');
@@ -110,6 +111,10 @@ const Register = () => {
       </div>
 
       <GoogleLoginButton />
+      
+      <div style={{ margin: '10px 0' }}>
+        <AppleLoginButton />
+      </div>
 
       <div style={{ textAlign: 'center', marginTop: '20px' }}>
         <span>Already have an account? </span>

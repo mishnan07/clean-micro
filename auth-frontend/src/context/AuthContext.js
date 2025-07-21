@@ -69,6 +69,19 @@ export const AuthProvider = ({ children }) => {
     return response.data;
   };
 
+  const appleLogin = async (idToken) => {
+    const response = await authAPI.appleAuth(idToken);
+    const { user, tokens } = response.data;
+    
+    localStorage.setItem('accessToken', tokens.accessToken);
+    localStorage.setItem('refreshToken', tokens.refreshToken);
+    setUser(user);
+    
+    return response.data;
+  };
+
+
+
   const logout = () => {
     localStorage.removeItem('accessToken');
     localStorage.removeItem('refreshToken');
@@ -80,6 +93,7 @@ export const AuthProvider = ({ children }) => {
     login,
     register,
     googleLogin,
+    appleLogin,
     logout,
     loading
   };
