@@ -60,11 +60,11 @@ export const AuthProvider = ({ children }) => {
 
   const googleLogin = async (credential) => {
     const response = await authAPI.googleAuth(credential);
-    const { user, tokens } = response.data;
+    const { accessToken,refreshToken } = response.data;
     
-    localStorage.setItem('accessToken', tokens.accessToken);
-    localStorage.setItem('refreshToken', tokens.refreshToken);
-    setUser(user);
+    localStorage.setItem('accessToken', accessToken);
+    localStorage.setItem('refreshToken', refreshToken);
+    setUser(response.data);
     
     return response.data;
   };

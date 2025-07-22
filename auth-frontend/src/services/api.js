@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_BASE_URL = 'http://localhost:3001/api';
+const API_BASE_URL = 'http://localhost:3010';
 
 const api = axios.create({
   baseURL: API_BASE_URL,
@@ -20,7 +20,7 @@ api.interceptors.request.use((config) => {
 
 // Auth API calls
 export const authAPI = {
-  googleAuth: (credential) => api.post('/auth/google', { credential }),
+  googleAuth: (credential) => api.post('/v1/user-no/auth/google', { credential }),
   appleAuth: (idToken) => api.post('/auth/apple', { idToken }),
   login: (email, password) => api.post('/auth/login', { email, password }),
   register: (name, email, password) => api.post('/auth/register', { name, email, password }),
