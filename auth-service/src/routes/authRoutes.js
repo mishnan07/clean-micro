@@ -1,5 +1,9 @@
 const express = require('express');
-const { googleAuth, appleAuth, login, register } = require('../controllers/authController');
+const { googleAuth } = require('../controllers/googleAuthController');
+const { appleAuth } = require('../controllers/appleAuthController');
+const { login } = require('../controllers/loginController');
+const { register } = require('../controllers/registerController');
+const { getProfile } = require('../controllers/profileController');
 const { authenticateToken } = require('../middleware/auth');
 
 const router = express.Router();
@@ -10,12 +14,7 @@ router.post('/apple', appleAuth);
 router.post('/login', login);
 router.post('/register', register);
 
-// Protected route example
-router.get('/profile', authenticateToken, (req, res) => {
-  res.json({
-    success: true,
-    user: req.user
-  });
-});
+// Protected route
+router.get('/profile', authenticateToken, getProfile);
 
 module.exports = router;
